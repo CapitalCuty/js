@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector("div");
+        var timeId = setInterval(function () {
+            if (div.offsetLeft >= 400) {
+                div.style.left = 400 + "px";
+                clearInterval(timeId)
+                return
+            }
+            div.style.left = 5 + div.offsetLeft + "px";
+        }, 10)
+
+    </script>
+</body>
+
+</html>

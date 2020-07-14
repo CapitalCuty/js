@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动画的封装</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <button>点击回到起点</button>
+    <script>
+        var div = document.querySelector("div");
+        var btn = document.querySelector("button");
+
+
+        function animate(ele, target, time) {
+            var timeId = setInterval(function () {
+                var step = (target - ele.offsetLeft) / 10;
+                step>0?step=Math.ceil(step):step=Math.floor(step);
+                if (ele.offsetLeft == target) {
+                    ele.style.left = target + "px";
+                    clearInterval(timeId)
+                }
+                ele.style.left = step + ele.offsetLeft + "px";
+            }, time)
+
+        }
+
+        animate(div, 401, 10);
+        btn.onclick = function () {
+            animate(div, 0, 10)
+        }
+    </script>
+</body>
+
+</html>
